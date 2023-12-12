@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown to January 1, 2024</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f36c05;
+      margin: 0;
+    }
+
+    .countdown-container {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+      font-size: 36px;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: #f3f3f3;
+      min-width: 60px;
+    }
+
+    .countdown-label {
+      font-size: 18px;
+      margin-top: 5px;
+    }
+
+    .countdown-separator {
+      font-size: 36px;
+      margin: 0 5px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .countdown-item {
+        font-size: 24px;
+      }
+      .countdown-label {
+        font-size: 14px;
+      }
+      .countdown-separator {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown-container">
+    <div class="countdown-item">
+      <div id="days"></div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="countdown-separator">:</div>
+    <div class="countdown-item">
+      <div id="hours"></div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-separator">:</div>
+    <div class="countdown-item">
+      <div id="minutes"></div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-separator">:</div>
+    <div class="countdown-item">
+      <div id="seconds"></div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      var now = new Date().getTime();
+      var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
+      var distance = countDownDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+    }
+
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+
+    // Initial call to display countdown
+    updateCountdown();
+  </script>
+</body>
+</html>
